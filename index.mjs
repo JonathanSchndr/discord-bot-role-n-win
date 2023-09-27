@@ -1,5 +1,5 @@
-const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+import { Client, GatewayIntentBits } from 'discord.js'
+const client = new Client({ intents: [GatewayIntentBits.Flags.Guilds] });
 
 // Hier kommt dein Token rein
 const token = process.env.DISCORD_BOT_TOKEN;
