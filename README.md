@@ -16,7 +16,7 @@
 7. copy this folder
 8. go back and copy the client secret from the bot page
 9. create an .env with DISCORD_BOT_TOKEN=%YOUR_CLIENT_SECRET% from the page
-10. execute `npm install
+10. execute `npm install`
 11. start the bot with `npm run start`.
 
 
