@@ -1,28 +1,31 @@
-# Discord Bot: Role & Win
+## Discord Bot: Roll & Win
 
 ## Requirements
-- Mac, Windows oder Linux System
+- Mac, Windows or Linux System
 - Discord Server
-- Node.js installiert (https://nodejs.org/en/)
+- Node.js installed (https://nodejs.org/en/)
 - (Optional: Node.js Server)
 
 ## Getting started
-1. Erstelle eine neue App auf https://discord.com/developers/applications
-2. Klickt auf Bot und dann auf "Add Bot" und kopiert euch den Client Secret
-3. Zudem aktiviere den SChalter für MESSAGE CONTENT INTENT auf der Bot Seite
-4. Klick auf 0Auth2 und wähle bei OAuth2 URL Generator "bot" und bei Permissions "Administrator" aus
-5. Öffne jetzt den Link der zwischen den Checkboxen steht
-6. Folgend wirst du aufgefordert den Bot zum deinem Discord Server hinzuzufügen
-7. Kopiere dir diesen Ordner
-8. Gehe zurück und kopiere dir den Client Secret von der Bot Seite
-9. Erstelle eine .env mit DISCORD_BOT_TOKEN=%DEIN_CLIENT_SECRET% von der Seite
-10. Führe `npm install` aus
-11. Starte den Bot mit `npm run start`
+1. create a new app on https://discord.com/developers/applications
+2. click on Bot and then on "Add Bot" and copy the Client Secret to yourself
+3. activate the Switch for MESSAGE CONTENT INTENT on the bot page
+4. click on 0Auth2 and select "bot" for OAuth2 URL Generator and "Administrator" for Permissions
+5. now open the link between the checkboxes
+6. you will be asked to add the bot to your Discord server
+7. copy this folder
+8. go back and copy the client secret from the bot page
+9. create an .env with DISCORD_BOT_TOKEN=%YOUR_CLIENT_SECRET% from the page
+10. execute `npm install
+11. start the bot with `npm run start`.
 
 
-Wichtig: Wenn du dies lokal auf deinem Rechner ausführst, funktioniert der Bot nur solange dein Rechner läuft. Alternativ musst du diesen Bot auf einem externen Server ausführen.
+Important: If you run this locally on your computer, the bot will only work as long as your computer is running. Alternatively, you must run this bot on an external server.
 
 ## Links
 - https://discord.js.org/#/docs/main/stable/general/welcome
 - https://github.com/discordjs/discord.js
 - https://discordjs.guide/#before-you-begin
+
+
+Translated with www.DeepL.com/Translator (free version)
