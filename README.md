@@ -26,6 +26,3 @@ Important: If you run this locally on your computer, the bot will only work as l
 - https://discord.js.org/#/docs/main/stable/general/welcome
 - https://github.com/discordjs/discord.js
 - https://discordjs.guide/#before-you-begin
-
-
-Translated with www.DeepL.com/Translator (free version)
