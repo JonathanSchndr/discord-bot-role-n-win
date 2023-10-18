@@ -9,11 +9,9 @@ const token = process.env.DISCORD_BOT_TOKEN;
 // Map to store user IDs and the date on which they last rolled the dice
 const userDates = new Map();
 
-// Map of available Amazon Keys
-const amazonKeys = new Map([
-    ['key1', 'AMAZON_KEY_1'],
-    ['key2', 'AMAZON_KEY_2'],
-    // ... More keys
+// Map of available Keys
+const keys = new Map([
+    ['KEY', '123'],
 ]);
 
 client.once('ready', async () => {
@@ -24,7 +22,7 @@ client.once('ready', async () => {
         const commands = guild.commands;
         await commands.create({
             name: 'roll',
-            description: 'Roll a dice and you might win an Amazon Key!',
+            description: 'Roll a dice and you might win!',
         });
     }
 });
@@ -41,7 +39,7 @@ client.on('interactionCreate', async (interaction) => {
         const lastDate = userDates.get(userId);
 
         if (lastDate && lastDate === currentDate) {
-            interaction.reply('You can only roll once per day! Try again tomorrow.');
+            await interaction.reply({ content: 'You can only roll once per day! Try again tomorrow.' });
             return;
         }
 
@@ -50,31 +48,42 @@ client.on('interactionCreate', async (interaction) => {
 
         // Determine the winning number for today
         const daySeed = new Date().getDate();
-        const winningNumber = Math.floor(Math.random() * daySeed * 100) % 100 + 1;
+        const winningNumber = Math.floor(Math.random() * daySeed * 30) % 30 + 1;
 
         // Roll the dice
-        const number = Math.floor(Math.random() * 100) + 1;
+        const number = Math.floor(Math.random() * 30) + 1;
+		
+		console.log('=======');
+		console.log('WINNING NUMBER: '+winningNumber);
+		console.log('USER NUMBER: '+number);
+		console.log('USER ID: '+userId);
+		console.log('=======');
+		
         if (number === winningNumber) {
-            if (amazonKeys.size === 0) {
-                interaction.reply('Unfortunately, all Amazon Keys have already been claimed.');
+            if (keys.size === 0) {
+                await interaction.reply({ content: 'Unfortunately, all prices have already been claimed. Write an Admin to get your price!' });
                 return;
             }
 
-            // Select a random Amazon Key from the Map and remove it
-            const keyIndex = Math.floor(Math.random() * amazonKeys.size);
-            const key = Array.from(amazonKeys.values())[keyIndex];
-            const keyId = Array.from(amazonKeys.keys())[keyIndex];
-            amazonKeys.delete(keyId);
+            const keyIndex = Math.floor(Math.random() * keys.size);
+            const key = Array.from(keys.values())[keyIndex];
+            const keyId = Array.from(keys.keys())[keyIndex];
+            keys.delete(keyId);
+			
+			console.log('$$ WINWINWINWIN $$');
+			console.log('WINNING KEY: '+key);
+			console.log('LAST KEYS COUNT: '+keys.size);
+			console.log('LAST KEYS: '+[...keys.entries()]);
+			console.log('$$ WINWINWINWIN $$');
 
-            // Send the Amazon Key via Direct Message
             try {
-                await user.send(`Congratulations! You rolled the winning number ${winningNumber} and won the Amazon Key: ${key}`);
-                interaction.reply('You won! Check your Direct Messages for your Amazon Key.');
+                await user.send(`Congratulations! You rolled the winning number ${winningNumber} and won. Enter the key: ${key} on https://codesphere.com/redeem to claim your price!`);
+                await interaction.reply({ content: 'You won! Check your Direct Messages for your price.' });
             } catch (e) {
-                interaction.reply('I couldn\'t send you a Direct Message. Make sure you allow Direct Messages on this server.');
+                await interaction.reply({ content: 'I couldn\'t send you a Direct Message. Make sure you allow Direct Messages on this server.' });
             }
         } else {
-            interaction.reply(`You rolled a ${number}. Better luck next time!`);
+            await interaction.reply({ content: `You rolled a ${number}. Better luck next time!` });
         }
     }
 });
